@@ -3,10 +3,10 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
 import Newsletter from "./Newsletter";
+import NewCollection from "./NewCollection";
 
 const Home = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-
   const [marvelData, setMarvelData] = useState([]);
   const [dcData, setDcData] = useState([]);
   const [starWarsData, setStarWarsData] = useState([]);
@@ -245,8 +245,9 @@ const Home = () => {
           </div>
         </TabPanel>
       </Tabs>
-
+      <div></div>
       <Newsletter></Newsletter>
+      <NewCollection></NewCollection>
     </div>
   );
 };

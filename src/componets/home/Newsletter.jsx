@@ -24,10 +24,10 @@ const Newsletter = () => {
               </svg>
             </div>
             <h2 className="text-3xl font-bold mb-6">
-              Subscribe to the newsletter
+            Want the latest offers ?  
             </h2>
             <p className="text-gray-500 mb-12">
-              We will write rarely and only high-quality content.
+            Subscribe to the newsletter
             </p>
             <div className="md:flex flex-row">
               <input
