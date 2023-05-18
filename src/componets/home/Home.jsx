@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
+import Newsletter from "./Newsletter";
 
 const Home = () => {
+  const [selectedTab, setSelectedTab] = useState(0);
+
   const [marvelData, setMarvelData] = useState([]);
   const [dcData, setDcData] = useState([]);
   const [starWarsData, setStarWarsData] = useState([]);
 
   useEffect(() => {
-    // Fetch the data for each category from the API
     fetch("http://localhost:5000/products/category/marvel")
       .then((response) => response.json())
       .then((data) => setMarvelData(data));
@@ -32,11 +34,13 @@ const Home = () => {
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
+            <h1 className="text-5xl font-bold">
+              Welcome to our Funko Pop Toys Shop!
+            </h1>
             <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Discover a world of adorable collectibles and bring your favorite
+              characters to life. Unleash your imagination and start your Funko
+              Pop adventure today!
             </p>
             <button className="btn btn-primary">Get Started</button>
           </div>
@@ -46,9 +50,30 @@ const Home = () => {
 
       <Tabs className="container mx-auto">
         <TabList className="flex justify-center">
-          <Tab>Marvel</Tab>
-          <Tab>DC</Tab>
-          <Tab>Star Wars</Tab>
+          <Tab
+            className={`btn btn-outline btn-primary ${
+              selectedTab === 0 ? "bg-secondary text-black" : ""
+            }`}
+            onClick={() => setSelectedTab(0)}
+          >
+            Marvel
+          </Tab>
+          <Tab
+            className={`btn btn-outline mx-4 btn-primary ${
+              selectedTab === 1 ? "bg-secondary text-black" : ""
+            }`}
+            onClick={() => setSelectedTab(1)}
+          >
+            DC
+          </Tab>
+          <Tab
+            className={`btn btn-outline btn-primary ${
+              selectedTab === 2 ? "bg-secondary text-black" : ""
+            }`}
+            onClick={() => setSelectedTab(2)}
+          >
+            Star Wars
+          </Tab>
         </TabList>
 
         <TabPanel>
@@ -77,9 +102,6 @@ const Home = () => {
                   </div>
                   <div className="mt-1 p-2">
                     <h2 className="text-slate-700">{item.toyName}</h2>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Lisbon, Portugal
-                    </p>
                     <div className="mt-3 flex items-end justify-between">
                       <p className="text-lg font-bold text-blue-500">$850</p>
                       <div className="flex items-center space-x-1.5 rounded-lg btn btn-primary px-4 py-1.5 text-white duration-100">
@@ -109,20 +131,6 @@ const Home = () => {
               </div>
             ))}
           </div>
-
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {marvelData.map((item) => (
-              <div
-                key={item._id}
-                className="p-4 border border-gray-300 rounded-md"
-              >
-                <p>{item.toyName}</p>
-                <Link to={`toy/${item._id}`} className="btn btn-warning">
-                  View toys
-                </Link>
-              </div>
-            ))}
-          </div> */}
         </TabPanel>
         <TabPanel>
           <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -150,9 +158,6 @@ const Home = () => {
                   </div>
                   <div className="mt-1 p-2">
                     <h2 className="text-slate-700">{item.toyName}</h2>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Lisbon, Portugal
-                    </p>
                     <div className="mt-3 flex items-end justify-between">
                       <p className="text-lg font-bold text-blue-500">$850</p>
                       <div className="flex items-center space-x-1.5 rounded-lg btn btn-primary px-4 py-1.5 text-white duration-100">
@@ -209,9 +214,6 @@ const Home = () => {
                   </div>
                   <div className="mt-1 p-2">
                     <h2 className="text-slate-700">{item.toyName}</h2>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Lisbon, Portugal
-                    </p>
                     <div className="mt-3 flex items-end justify-between">
                       <p className="text-lg font-bold text-blue-500">$850</p>
                       <div className="flex items-center space-x-1.5 rounded-lg btn btn-primary px-4 py-1.5 text-white duration-100">
@@ -243,6 +245,8 @@ const Home = () => {
           </div>
         </TabPanel>
       </Tabs>
+
+      <Newsletter></Newsletter>
     </div>
   );
 };
