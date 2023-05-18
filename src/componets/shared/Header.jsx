@@ -13,7 +13,7 @@ const Header = () => {
       .catch((error) => toast.error(error.message));
   };
   return (
-    <nav className=" mx-auto md:px-60 flex justify-between py-3 navbar bg-primary text-black z-30 sticky top-0 left-0 right-0">
+    <nav className=" mx-auto md:px-60 flex justify-between py-3 navbar bg-secondary text-black z-30 sticky top-0 left-0 right-0">
       <div className="flex justify-between w-full md:w-fit">
         <Link to="/" className="text-xl md:text-2xl font-bold">
           Funko Fanfare
@@ -58,13 +58,13 @@ const Header = () => {
             </li>
             {user ? (
               <li>
-                <button onClick={handleLogOut} className="btn btn-warning">
+                <button onClick={handleLogOut} className="btn btn-primary">
                   Logout
                 </button>
               </li>
             ) : (
               <li>
-                <Link to="/login" className="btn btn-warning">
+                <Link to="/login" className="btn btn-secondary">
                   Login
                 </Link>
               </li>
@@ -119,13 +119,13 @@ const Header = () => {
           )}
           {user ? (
             <li>
-              <button onClick={handleLogOut} className="btn btn-warning">
+              <button onClick={handleLogOut} className="btn btn-primary">
                 Logout
               </button>
             </li>
           ) : (
             <li>
-              <Link to="/login" className="btn btn-warning">
+              <Link to="/login" className="btn btn-primary">
                 Login
               </Link>
             </li>

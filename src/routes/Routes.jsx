@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../componets/pages/ErrorPage";
 import Blogs from "../componets/pages/Blogs";
 import Profile from "../componets/pages/Profile";
+import Toy from "../componets/pages/Toy";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,12 +17,25 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
+      },
+      {
+        path: "toy/:id",
+        element: <Toy></Toy>,
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/products/${params.id}`
+          ),
       },
       {
         path: "/profile",
-        element: ( <PrivateRoute><Profile></Profile> </PrivateRoute> )
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>{" "}
+          </PrivateRoute>
+        ),
       },
+
       {
         path: "/login",
         element: <Login></Login>,
