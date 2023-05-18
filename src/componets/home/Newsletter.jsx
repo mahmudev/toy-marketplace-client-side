@@ -1,9 +1,18 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Newsletter = () => {
+
+    useEffect(() => {
+        AOS.init();
+      }, []);
+    
+
   return (
-    <div>
-      <div className="my-12 py-7 bg-secondary text-gray-800 text-center">
+
+      <div  data-aos="fade-up" className="my-12 py-7 bg-secondary text-gray-800 text-center">
         <div className="flex flex-wrap justify-center">
           <div className="grow-0 shrink-0 flex-basis w-full lg:w-6/12 px-3">
             <div className="p-4 bg-primary rounded-full shadow-lg inline-block mb-6">
@@ -40,7 +49,7 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

@@ -4,7 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
 import Newsletter from "./Newsletter";
 import NewCollection from "./NewCollection";
-
+import MostSelling from "./MostSelling";
 const Home = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [marvelData, setMarvelData] = useState([]);
@@ -245,7 +245,7 @@ const Home = () => {
           </div>
         </TabPanel>
       </Tabs>
-      <div></div>
+  <MostSelling></MostSelling>
       <Newsletter></Newsletter>
       <NewCollection></NewCollection>
     </div>

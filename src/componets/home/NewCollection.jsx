@@ -19,7 +19,7 @@ const NewCollection = () => {
           <div
             data-aos-duration="2000"
             data-aos="fade-right"
-            className="border"
+            className="border hover:shadow-xl hover:transform hover:scale-105 duration-300"
           >
             <img src="https://i.ibb.co/KDtngJ3/image.png" alt="" />
           </div>
@@ -27,7 +27,7 @@ const NewCollection = () => {
           <div
             data-aos-duration="2000"
             data-aos="fade-left"
-            className=" border"
+            className=" border hover:shadow-xl hover:transform hover:scale-105 duration-300"
           >
             <img src="https://i.ibb.co/dDrQMH0/image.png" alt="" />
           </div>
@@ -35,7 +35,7 @@ const NewCollection = () => {
           <div
             data-aos-duration="2000"
             data-aos="fade-right"
-            className=" border"
+            className=" border hover:shadow-xl hover:transform hover:scale-105 duration-300"
           >
             <img src="https://i.ibb.co/cDR3k6R/image.png" alt="" />
           </div>
@@ -43,7 +43,7 @@ const NewCollection = () => {
           <div
             data-aos-duration="2000"
             data-aos="fade-left"
-            className=" border"
+            className=" border hover:shadow-xl hover:transform hover:scale-105 duration-300"
           >
             <img src="https://i.ibb.co/6vcYK1k/image.png" alt="" />
           </div>
