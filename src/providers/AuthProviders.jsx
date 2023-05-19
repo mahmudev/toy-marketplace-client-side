@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import app from "../firebase/firebase.config";
 import {
   GoogleAuthProvider,
   sendPasswordResetEmail,
@@ -9,7 +10,6 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 
@@ -47,6 +47,21 @@ const AuthProviders = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      if (currentUser && currentUser.email) {
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: currentUser.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("funko-access-token", data.token);
+          });
+      } else {
+        localStorage.removeItem("funko-access-token");
+      }
     });
 
     return () => {
