@@ -44,7 +44,7 @@ const Home = () => {
               characters to life. Unleash your imagination and start your Funko
               Pop adventure today!
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn text-white btn-primary">Get Started</button>
           </div>
         </div>
       </div>
