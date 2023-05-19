@@ -1,11 +1,203 @@
-import React from 'react';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const AddAToy = () => {
-    return (
-        <div>
-            Add A Toy
+  const { user } = useContext(AuthContext);
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Added Successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
+  };
+
+  return (
+    <div className="container my-12 mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid gap-6 mb-6 lg:grid-cols-2">
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Toy Name
+            </label>
+            <input
+              {...register("toyName")}
+              placeholder="Type here"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Image URL
+            </label>
+            <input
+              {...register("img")}
+              placeholder="Type here"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="company"
+              className="block mb-2 text-sm font-medium text-gray-900  "
+            >
+              category
+            </label>
+            <select
+              className="select select-bordered w-full"
+              {...register("category")}
+            >
+              <option value="marvel">Marvel</option>
+              <option value="dc">DC</option>
+              <option value="star-wars">Star-Wars</option>
+            </select>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Price
+            </label>
+            <input
+              {...register("Price")}
+              placeholder="price"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Seller Name
+            </label>
+            <input
+              {...register("sellerName")}
+              defaultValue={user?.displayName}
+              placeholder="Type here"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Seller Email
+            </label>
+            <input
+              {...register("sellerEmail")}
+              defaultValue={user?.email}
+              placeholder="Type here"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Brand
+            </label>
+            <select
+              className="select select-bordered w-full"
+              {...register("brand")}
+            >
+              <option value="Funko">Funko</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Color
+            </label>
+            <select
+              className="select select-bordered w-full"
+              {...register("color")}
+            >
+              <option value="Multicolor">Multicolor</option>
+              <option value="singleColor">singleColor</option>
+            </select>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Color
+            </label>
+            <select
+              className="select select-bordered w-full"
+              {...register("Rating")}
+            >
+              <option value="5">5 Star</option>
+              <option value="4">4 Star</option>
+              <option value="3">3 Star</option>
+              <option value="2">2 Star</option>
+              <option value="1">1 Star</option>
+            </select>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Quantity
+            </label>
+            <input
+              {...register("quantity")}
+              placeholder="Quantity"
+              className="input input-bordered w-full"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Weight
+            </label>
+            <select
+              className="select select-bordered w-full"
+              {...register("weight")}
+            >
+              <option value="5 ounces">5 Ounces</option>
+              <option value="4 ounces">4 Ounces</option>
+              <option value="3 ounces">3 Ounces</option>
+              <option value="2 ounces">2 Ounces</option>
+              <option value="1 ounces">1 Ounces</option>
+            </select>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900  ">
+              Material
+            </label>
+            <select
+              className="select select-bordered w-full"
+              {...register("material")}
+            >
+              <option value="Vinyl">Vinyl</option>
+              <option value="plastic">plastic</option>
+              <option value="wood">Wood</option>
+            </select>
+          </div>
         </div>
-    );
+
+        <div className="mb-6">
+          <label
+            htmlFor="confirm_password"
+            className="block mb-2 text-sm font-medium text-gray-900  "
+          >
+            Description
+          </label>
+          <textarea
+            {...register("description")}
+            className="textarea w-full textarea-bordered"
+            placeholder="Description"
+          ></textarea>
+        </div>
+
+        <input type="submit" value="Add toys" className="btn btn-primary" />
+      </form>
+    </div>
+  );
 };
 
 export default AddAToy;
