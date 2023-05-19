@@ -8,7 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../componets/pages/ErrorPage";
 import Blogs from "../componets/pages/Blogs";
 import Profile from "../componets/pages/Profile";
-import Toy from "../componets/pages/Toy";
+import ToyDetails from "../componets/pages/ToyDetails";
 import AddAToy from "../componets/pages/AddAToy";
 import AllToys from "../componets/pages/AllToys";
 import MyToys from "../componets/pages/MyToys";
@@ -27,8 +27,7 @@ const router = createBrowserRouter([
         path: "toy/:id",
         element: (
           <PrivateRoute>
-            {" "}
-            <Toy></Toy>{" "}
+            <ToyDetails></ToyDetails>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
