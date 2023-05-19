@@ -1,15 +1,31 @@
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProviders";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddAToy = () => {
-  const { user } = useContext(AuthContext);
+const UpdateToys = () => {
+  const loadedToys = useLoaderData();
+  const {
+    _id,
+    toyName,
+    img,
+    sellerName,
+    sellerEmail,
+    category,
+    Price,
+    Rating,
+    quantity,
+    description,
+    brand,
+    color,
+    weight,
+    material,
+  } = loadedToys;
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/added-toys", {
-      method: "POST",
+    fetch(`http://localhost:5000/added-toys/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -18,12 +34,12 @@ const AddAToy = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Toy Added Successfully",
+            text: "Toy Updated Successfully",
             icon: "success",
-            confirmButtonText: "OK",
+            confirmButtonText: "ok",
           });
         }
       });
@@ -31,7 +47,7 @@ const AddAToy = () => {
 
   return (
     <div className="container mb-12 mx-auto">
-         <h2 className="text-center py-6 text-3xl">Add a Toy</h2>
+      <h2 className="text-center py-6 text-3xl">Update Toy</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-6 mb-6 lg:grid-cols-2">
           <div>
@@ -42,6 +58,7 @@ const AddAToy = () => {
               {...register("toyName")}
               placeholder="Type here"
               className="input input-bordered w-full"
+              defaultValue={toyName}
             />
           </div>
           <div>
@@ -52,6 +69,7 @@ const AddAToy = () => {
               {...register("img")}
               placeholder="Type here"
               className="input input-bordered w-full"
+              defaultValue={img}
             />
           </div>
           <div>
@@ -64,11 +82,11 @@ const AddAToy = () => {
             <select
               className="select select-bordered w-full"
               {...register("category")}
+              defaultValue={category}
             >
               <option value="marvel">Marvel</option>
               <option value="dc">DC</option>
               <option value="star-wars">Star-Wars</option>
-              <option value="other">Other</option>
             </select>
           </div>
           <div>
@@ -79,6 +97,7 @@ const AddAToy = () => {
               {...register("Price")}
               placeholder="price"
               className="input input-bordered w-full"
+              defaultValue={Price}
             />
           </div>
           <div>
@@ -87,7 +106,7 @@ const AddAToy = () => {
             </label>
             <input
               {...register("sellerName")}
-              defaultValue={user?.displayName}
+              defaultValue={sellerName}
               placeholder="Type here"
               className="input input-bordered w-full"
             />
@@ -98,7 +117,7 @@ const AddAToy = () => {
             </label>
             <input
               {...register("sellerEmail")}
-              defaultValue={user?.email}
+              defaultValue={sellerEmail}
               placeholder="Type here"
               className="input input-bordered w-full"
             />
@@ -110,6 +129,7 @@ const AddAToy = () => {
             <select
               className="select select-bordered w-full"
               {...register("brand")}
+              defaultValue={brand}
             >
               <option value="Funko">Funko</option>
               <option value="Other">Other</option>
@@ -122,6 +142,7 @@ const AddAToy = () => {
             <select
               className="select select-bordered w-full"
               {...register("color")}
+              defaultValue={color}
             >
               <option value="Multicolor">Multicolor</option>
               <option value="singleColor">singleColor</option>
@@ -129,11 +150,12 @@ const AddAToy = () => {
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900  ">
-            Rating
+              Rating
             </label>
             <select
               className="select select-bordered w-full"
               {...register("Rating")}
+              defaultValue={Rating}
             >
               <option value="5">5 Star</option>
               <option value="4">4 Star</option>
@@ -150,6 +172,7 @@ const AddAToy = () => {
               {...register("quantity")}
               placeholder="Quantity"
               className="input input-bordered w-full"
+              defaultValue={quantity}
             />
           </div>
           <div>
@@ -159,6 +182,7 @@ const AddAToy = () => {
             <select
               className="select select-bordered w-full"
               {...register("weight")}
+              defaultValue={weight}
             >
               <option value="5 ounces">5 Ounces</option>
               <option value="4 ounces">4 Ounces</option>
@@ -174,6 +198,7 @@ const AddAToy = () => {
             <select
               className="select select-bordered w-full"
               {...register("material")}
+              defaultValue={material}
             >
               <option value="Vinyl">Vinyl</option>
               <option value="plastic">plastic</option>
@@ -190,16 +215,17 @@ const AddAToy = () => {
             Description
           </label>
           <textarea
+            defaultValue={description}
             {...register("description")}
             className="textarea w-full textarea-bordered"
             placeholder="Description"
           ></textarea>
         </div>
 
-        <input type="submit" value="Add toys" className="btn btn-primary" />
+        <input type="submit" value="Update toys" className="btn btn-primary" />
       </form>
     </div>
   );
 };
 
-export default AddAToy;
+export default UpdateToys;
