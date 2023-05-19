@@ -42,7 +42,7 @@ const Toy = ({ item }) => {
                   />
                 </svg>
 
-                <Link to={`toy/${item?._id}`}>
+                <Link to={`/toy/${item?._id}`}>
                   <button className="text-sm">View Details</button>
                 </Link>
               </div>

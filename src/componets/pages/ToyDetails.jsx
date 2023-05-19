@@ -114,7 +114,7 @@ const ToyDetails = () => {
 
             <div className="flex gap-5  items-center">
               <p className="items-centers text-4xl font-extrabold text-gray-600 ">
-                Price: {Price}
+                Price: {Price} $
               </p>
               <a className="btn btn-primary">Buy Now</a>
             </div>
