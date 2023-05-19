@@ -8,7 +8,7 @@ const AddAToy = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/products", {
+    fetch("http://localhost:5000/added-toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
