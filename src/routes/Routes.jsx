@@ -9,6 +9,10 @@ import ErrorPage from "../componets/pages/ErrorPage";
 import Blogs from "../componets/pages/Blogs";
 import Profile from "../componets/pages/Profile";
 import Toy from "../componets/pages/Toy";
+import AddAToy from "../componets/pages/AddAToy";
+import AllToys from "../componets/pages/AllToys";
+import MyToys from "../componets/pages/MyToys";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,17 +25,44 @@ const router = createBrowserRouter([
       },
       {
         path: "toy/:id",
-        element: <PrivateRoute> <Toy></Toy> </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Toy></Toy>{" "}
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(
-            `http://localhost:5000/products/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/profile",
         element: (
           <PrivateRoute>
             <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/add-toys",
+        element: (
+          <PrivateRoute>
+            <AddAToy></AddAToy>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/all-toys",
+        element: (
+          <PrivateRoute>
+            <AllToys></AllToys>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-toys",
+        element: (
+          <PrivateRoute>
+            <MyToys></MyToys>
           </PrivateRoute>
         ),
       },
