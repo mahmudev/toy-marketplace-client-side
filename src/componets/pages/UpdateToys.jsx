@@ -87,6 +87,7 @@ const UpdateToys = () => {
               <option value="marvel">Marvel</option>
               <option value="dc">DC</option>
               <option value="star-wars">Star-Wars</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div>

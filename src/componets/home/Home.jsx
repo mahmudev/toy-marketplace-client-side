@@ -5,6 +5,7 @@ import Newsletter from "./Newsletter";
 import NewCollection from "./NewCollection";
 import Toy from "../shared/card/Toy";
 import MostSelling from "./MostSelling";
+import ToysGallery from "./ToysGallery";
 
 
 const Home = () => {
@@ -48,8 +49,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <ToysGallery></ToysGallery>
       <h1 className="text-3xl my-10 font-semibold text-black text-center lg:text-4xl">
-        New In
+      By Category
       </h1>
 
       <Tabs className="container mx-auto">

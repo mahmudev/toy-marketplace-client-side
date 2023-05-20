@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <nav className="mx-auto md:px-60 flex justify-between py-3 navbar bg-secondary text-black z-30 sticky top-0 left-0 right-0">
-      <Link to="/" className="text-xl md:text-2xl font-bold">Funko Fanfare</Link>
+      <Link to="/" className="text-xl md:text-2xl font-bold"> <img src="https://i.ibb.co/HYx3TJD/dddd.png" className="w-40" /></Link>
 
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">

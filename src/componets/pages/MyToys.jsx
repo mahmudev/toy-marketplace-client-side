@@ -61,10 +61,10 @@ const MyToys = () => {
           <thead>
             <tr>
               <th>Image</th>
-              <th>category</th>
-              <th>Price</th>
-              <th>seller Name</th>
-              <th>color</th>
+              <th>Name</th>
+              <th>Price $</th>
+              <th>Seller Name</th>
+              <th>Category</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -82,7 +82,7 @@ const MyToys = () => {
                 </td>
                 <td>
                   <p className=" text-xl font-bold text-gray-600">
-                    {toy?.category}
+                    {toy?.toyName}
                   </p>
                 </td>
                 <td>
@@ -97,7 +97,7 @@ const MyToys = () => {
                 </td>
                 <td>
                   <p className=" text-xl font-bold text-gray-600">
-                    {toy?.color}
+                    {toy?.category}
                   </p>
                 </td>
                 <th>

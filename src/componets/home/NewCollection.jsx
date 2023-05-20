@@ -10,7 +10,7 @@ const NewCollection = () => {
 
   return (
     <div>
-      <div className="max-w-xl lg:my-20 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+      <div className=" lg:my-20 md:mx-auto sm:text-center  md:mb-12">
         <h1 className="text-3xl my-10 font-semibold text-black text-center lg:text-4xl">
           New Collection
         </h1>
