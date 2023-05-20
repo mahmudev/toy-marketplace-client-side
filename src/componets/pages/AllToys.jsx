@@ -1,22 +1,144 @@
 import React, { useEffect, useState } from "react";
-import Toy from "../shared/card/Toy";
+import { Link } from "react-router-dom";
+
 const AllToys = () => {
   const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
-    fetch("http://localhost:5000/products?limit=20")
+    setError(false);
+
+    const apiUrl =
+      searchQuery.trim() !== ""
+        ? `http://localhost:5000/products/toy-name/${searchQuery}`
+        : `http://localhost:5000/products?page=${currentPage}`;
+
+    fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
+      .then((data) => {
+        setData(data);
+      })
+      .catch(() => {
+        setError(true);
+      });
+  }, [searchQuery, currentPage]);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1); // Reset the page to 1 when a new search query is entered
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
-    <div className="container mx-auto">
-      <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
-        All Toys
-      </h5>
-      <div className="mx-auto grid  grid-cols-1 gap-4 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-        {data.map((item) => (
-          <Toy item={item} key={item._id}></Toy>
-        ))}
+    <div className="flex flex-col min-h-screen">
+      <div className="container flex-grow mx-auto">
+        <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
+          All Toys
+        </h5>
+        <div className="flex justify-center mb-6">
+          <input
+            type="text"
+            placeholder="Search toys"
+            className="block border-b-2 bg-base-100 text-center  border-blue-500 w-full lg:w-1/2 px-4 py-2 text-lg focus:border-blue-600 focus:outline-none"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </div>
+        {error && (
+          <div className="text-red-500 text-center mb-6">
+            Error occurred while fetching data.
+          </div>
+        )}
+        {!error && (
+          <div className="mx-auto">
+            {data.length === 0 ? (
+              <div className="text-center mb-6 text-xl font-bold ">
+                No results found.
+              </div>
+            ) : (
+              <table className="table w-full">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price $</th>
+                    <th>Seller Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((toy) => (
+                    <tr key={toy._id}>
+                      <td>
+                        <div className="flex items-center space-x-3">
+                          <div className="avatar">
+                            <div className="rounded w-12 h-20s">
+                              <img src={toy.img} />
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p className=" text-xl font-bold text-gray-600">
+                          {toy?.toyName}
+                        </p>
+                      </td>
+                      <td>
+                        <p className=" text-xl font-bold text-gray-600">
+                          {toy?.quantity}
+                        </p>
+                      </td>
+                      <td>
+                        <p className=" text-xl font-bold text-gray-600">
+                          {toy?.Price}
+                        </p>
+                      </td>
+                      <td>
+                        <p className=" text-xl font-bold text-gray-600">
+                          {toy?.sellerName}
+                        </p>
+                      </td>
+                      <td>
+                        <p className=" text-xl font-bold text-gray-600">
+                          {toy?.category}
+                        </p>
+                      </td>
+                      <th>
+                        <div className="flex  gap-4">
+                          <Link to={`/toy/${toy?._id}`}>
+                            <button className="btn btn-primary">Details</button>
+                          </Link>
+                        </div>
+                      </th>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        )}
+      </div>
+      <div className="flex justify-center my-10">
+        <button
+          className="px-4 btn btn-primary py-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-md mr-2"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <button
+          className="px-4 btn btn-primary py-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-md"
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
