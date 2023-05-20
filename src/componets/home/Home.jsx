@@ -6,9 +6,15 @@ import NewCollection from "./NewCollection";
 import Toy from "../shared/card/Toy";
 import MostSelling from "./MostSelling";
 import ToysGallery from "./ToysGallery";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const Home = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const [selectedTab, setSelectedTab] = useState(0);
   const [marvelData, setMarvelData] = useState([]);
   const [dcData, setDcData] = useState([]);
@@ -32,11 +38,11 @@ const Home = () => {
     <div>
       <div className="hero bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img
+          <img data-aos="fade-left" data-aos-duration="2000"
             src="https://m.media-amazon.com/images/I/51lML+ZBXcL._AC_SX679_.jpg"
             className="max-w-sm rounded-lg shadow-2xl"
           />
-          <div>
+          <div  data-aos-duration="2000"   data-aos="fade-right" >
             <h1 className="text-5xl font-bold">
               Welcome to our Funko Pop Toys Shop!
             </h1>

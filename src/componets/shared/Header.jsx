@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink, } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { toast } from "react-toastify";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  const { user, logOut } = useContext(AuthContext);
   const handleLogOut = async () => {
     try {
       await logOut();
@@ -16,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="mx-auto md:px-60 flex justify-between py-3 navbar bg-secondary text-black z-30 sticky top-0 left-0 right-0">
+    <nav data-aos="fade-down"  data-aos-duration="2000" className="mx-auto md:px-60 flex justify-between py-3 navbar bg-secondary text-black z-30 sticky top-0 left-0 right-0">
       <Link to="/" className="text-xl md:text-2xl font-bold"> <img src="https://i.ibb.co/HYx3TJD/dddd.png" className="w-40" /></Link>
 
       <div className="dropdown dropdown-end">
