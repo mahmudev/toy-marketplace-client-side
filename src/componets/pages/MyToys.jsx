@@ -54,7 +54,7 @@ const MyToys = () => {
   };
 
   return (
-    <div className="container overflow-auto mx-auto">
+    <div className="container h-screen overflow-auto mx-auto">
       <h2 className="text-center py-12 text-5xl">Your toys: {myToys.length}</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
