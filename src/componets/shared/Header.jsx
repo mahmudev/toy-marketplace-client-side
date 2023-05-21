@@ -17,7 +17,6 @@ const Header = () => {
   return (
     <nav className="mx-auto md:px-60 flex justify-between py-3 navbar bg-secondary text-black z-30 sticky top-0 left-0 right-0">
       <Link to="/" className="text-xl md:text-2xl font-bold">
-        {" "}
         <img src="https://i.ibb.co/HYx3TJD/dddd.png" className="w-40" />
       </Link>
 
@@ -63,11 +62,6 @@ const Header = () => {
               <li>
                 <NavLink to="/add-toys" activeClassName="active">
                   Add Toys
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/profile" activeClassName="active">
-                  Profile
                 </NavLink>
               </li>
             </>
@@ -126,7 +120,7 @@ const Header = () => {
                 className="w-10 h-10 rounded-full overflow-hidden"
                 title={user.displayName}
               >
-                <Link to="/profile">
+           
                   <img
                     className="hover:cursor-pointer"
                     src={
@@ -139,7 +133,7 @@ const Header = () => {
                         : "Default profile picture"
                     }
                   />
-                </Link>
+           
               </div>
             </li>
           </>

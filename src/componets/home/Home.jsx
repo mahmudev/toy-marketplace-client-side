@@ -9,7 +9,7 @@ import ToysGallery from "./ToysGallery";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useTitle from "../../hooks/useTitle";
-import { Link } from "react-router-dom";
+import Hero from "./Hero";
 
 const Home = () => {
   useTitle("Home");
@@ -43,32 +43,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="hero bg-base-100">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <img
-            data-aos="fade-left"
-            data-aos-duration="2000"
-            src="https://m.media-amazon.com/images/I/51lML+ZBXcL._AC_SX679_.jpg"
-            className="max-w-sm rounded-lg shadow-2xl"
-            alt="Hero Image"
-          />
-          <div data-aos-duration="2000" data-aos="fade-right">
-            <h1 className="text-5xl font-bold">
-              Welcome to our Funko Pop Toys Shop!
-            </h1>
-            <p className="py-6">
-              Discover a world of adorable collectibles and bring your favorite
-              characters to life. Unleash your imagination and start your Funko
-              Pop adventure today!
-            </p>
-            <Link to="/all-toys">
-              <button className="btn text-white btn-primary">
-                Get Started
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
+<Hero></Hero>
       <ToysGallery></ToysGallery>
       <h1 className="text-3xl my-16 font-semibold text-black text-center lg:text-4xl">
         By Category

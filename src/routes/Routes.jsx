@@ -7,7 +7,6 @@ import Register from "../componets/auth/Register";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../componets/pages/ErrorPage";
 import Blogs from "../componets/pages/Blogs";
-import Profile from "../componets/pages/Profile";
 import ToyDetails from "../componets/pages/ToyDetails";
 import AddAToy from "../componets/pages/AddAToy";
 import AllToys from "../componets/pages/AllToys";
@@ -33,14 +32,6 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`https://funko-fanfare.vercel.app/toys/${params.id}`),
-      },
-      {
-        path: "/profile",
-        element: (
-          <PrivateRoute>
-            <Profile></Profile>
-          </PrivateRoute>
-        ),
       },
       {
         path: "/add-toys",
