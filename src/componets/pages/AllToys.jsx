@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
+  useTitle("All-Toy");
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState(false);
@@ -9,11 +11,10 @@ const AllToys = () => {
 
   useEffect(() => {
     setError(false);
-
     const apiUrl =
       searchQuery.trim() !== ""
-        ? `http://localhost:5000/products/toy-name/${searchQuery}`
-        : `http://localhost:5000/products?page=${currentPage}`;
+        ? `https://funko-fanfare.vercel.app/toys/toy-name/${searchQuery}`
+        : `https://funko-fanfare.vercel.app/toys?page=${currentPage}`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -27,7 +28,7 @@ const AllToys = () => {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
-    setCurrentPage(1); // Reset the page to 1 when a new search query is entered
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page) => {
@@ -56,7 +57,7 @@ const AllToys = () => {
         )}
         {!error && (
           <div className="mx-auto">
-            {data.length === 0 ? (
+            {data?.length === 0 ? (
               <div className="text-center mb-6 text-xl font-bold ">
                 No results found.
               </div>
@@ -80,7 +81,7 @@ const AllToys = () => {
                         <div className="flex items-center space-x-3">
                           <div className="avatar">
                             <div className="rounded w-12 h-20s">
-                              <img src={toy.img} />
+                              <img src={toy?.img} />
                             </div>
                           </div>
                         </div>

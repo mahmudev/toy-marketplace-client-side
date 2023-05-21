@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle('Register')
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (event) => {

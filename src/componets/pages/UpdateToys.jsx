@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const UpdateToys = () => {
+  useTitle("Update-toy");
   const loadedToys = useLoaderData();
   const {
     _id,
@@ -24,7 +26,7 @@ const UpdateToys = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/added-toys/${_id}`, {
+    fetch(`https://funko-fanfare.vercel.app/added-toys/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -44,7 +46,6 @@ const UpdateToys = () => {
         }
       });
   };
-
   return (
     <div className="container mb-12 mx-auto">
       <h2 className="text-center py-6 text-3xl">Update Toy</h2>
@@ -207,7 +208,6 @@ const UpdateToys = () => {
             </select>
           </div>
         </div>
-
         <div className="mb-6">
           <label
             htmlFor="confirm_password"
@@ -222,7 +222,6 @@ const UpdateToys = () => {
             placeholder="Description"
           ></textarea>
         </div>
-
         <input type="submit" value="Update toys" className="btn btn-primary" />
       </form>
     </div>

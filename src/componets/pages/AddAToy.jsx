@@ -2,13 +2,15 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const AddAToy = () => {
+  useTitle('Add-Toy')
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/added-toys", {
+    fetch("https://funko-fanfare.vercel.app/add-toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,7 +33,7 @@ const AddAToy = () => {
 
   return (
     <div className="container mb-12 mx-auto">
-         <h2 className="text-center py-6 text-3xl">Add a Toy</h2>
+      <h2 className="text-center py-6 text-3xl">Add a Toy</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-6 mb-6 lg:grid-cols-2">
           <div>
@@ -129,7 +131,7 @@ const AddAToy = () => {
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900  ">
-            Rating
+              Rating
             </label>
             <select
               className="select select-bordered w-full"
@@ -181,7 +183,6 @@ const AddAToy = () => {
             </select>
           </div>
         </div>
-
         <div className="mb-6">
           <label
             htmlFor="confirm_password"
@@ -195,7 +196,6 @@ const AddAToy = () => {
             placeholder="Description"
           ></textarea>
         </div>
-
         <input type="submit" value="Add toys" className="btn btn-primary" />
       </form>
     </div>

@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Toy from "../shared/card/Toy";
 
 const MostSelling = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products?limit=4")
+    fetch("https://funko-fanfare.vercel.app/toys?limit=4")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);

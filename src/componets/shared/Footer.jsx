@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <p>Copyright © 2023 - All right reserved by  Funko Fanfare</p>
+          <p>Copyright © 2023 - All right reserved by Funko Fanfare</p>
         </div>
       </footer>
     </>

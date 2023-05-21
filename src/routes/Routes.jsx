@@ -32,7 +32,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://funko-fanfare.vercel.app/toys/${params.id}`),
       },
       {
         path: "/profile",
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://funko-fanfare.vercel.app/toys/${params.id}`),
       },
 
       {

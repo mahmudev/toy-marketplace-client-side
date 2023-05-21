@@ -1,13 +1,6 @@
 import React from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 const NewCollection = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
     <div>
       <div className=" lg:my-20 md:mx-auto sm:text-center  md:mb-12">

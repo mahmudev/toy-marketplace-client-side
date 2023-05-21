@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Toy from "../shared/card/Toy";
-
+import useTitle from "../../hooks/useTitle";
 const ToyDetails = () => {
+  useTitle("Toy-Details");
   const toy = useLoaderData();
-
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products?limit=6")
+    fetch("https://funko-fanfare.vercel.app/toys?limit=12")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
@@ -36,7 +36,6 @@ const ToyDetails = () => {
           <div className="p-8 lg:ml-16 lg:mt-14 lg:mb-14 lg:w-1/4 h-full">
             <img src={img} className="object-cover w-full  lg:h-full" />
           </div>
-
           <div className=" p-8 bg-white lg:p-16 lg:pl-10 lg:w-1/2">
             <h5 className="mb-3 text-3xl font-extrabold leading-none sm:text-4xl">
               {toyName}
@@ -111,7 +110,6 @@ const ToyDetails = () => {
               </span>
               {description}
             </p>
-
             <div className="flex gap-5  items-center">
               <p className="items-centers text-4xl font-extrabold text-gray-600 ">
                 Price: {Price} $

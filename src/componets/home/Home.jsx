@@ -8,9 +8,11 @@ import MostSelling from "./MostSelling";
 import ToysGallery from "./ToysGallery";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  useTitle("Home");
   useEffect(() => {
     AOS.init();
   }, []);
@@ -21,15 +23,15 @@ const Home = () => {
   const [starWarsData, setStarWarsData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products/category/marvel")
+    fetch("https://funko-fanfare.vercel.app/toys/category/marvel")
       .then((response) => response.json())
       .then((data) => setMarvelData(data));
 
-    fetch("http://localhost:5000/products/category/dc")
+    fetch("https://funko-fanfare.vercel.app/toys/category/dc")
       .then((response) => response.json())
       .then((data) => setDcData(data));
 
-    fetch("http://localhost:5000/products/category/star-wars")
+    fetch("https://funko-fanfare.vercel.app/toys/category/star-wars")
       .then((response) => response.json())
       .then((data) => setStarWarsData(data));
   }, []);
@@ -38,11 +40,13 @@ const Home = () => {
     <div>
       <div className="hero bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img data-aos="fade-left" data-aos-duration="2000"
+          <img
+            data-aos="fade-left"
+            data-aos-duration="2000"
             src="https://m.media-amazon.com/images/I/51lML+ZBXcL._AC_SX679_.jpg"
             className="max-w-sm rounded-lg shadow-2xl"
           />
-          <div  data-aos-duration="2000"   data-aos="fade-right" >
+          <div data-aos-duration="2000" data-aos="fade-right">
             <h1 className="text-5xl font-bold">
               Welcome to our Funko Pop Toys Shop!
             </h1>
@@ -51,13 +55,17 @@ const Home = () => {
               characters to life. Unleash your imagination and start your Funko
               Pop adventure today!
             </p>
-            <button className="btn text-white btn-primary">Get Started</button>
+            <Link to="/all-toys">
+              <button className="btn text-white btn-primary">
+                Get Started
+              </button>
+            </Link>
           </div>
         </div>
       </div>
       <ToysGallery></ToysGallery>
       <h1 className="text-3xl my-10 font-semibold text-black text-center lg:text-4xl">
-      By Category
+        By Category
       </h1>
 
       <Tabs className="container mx-auto">

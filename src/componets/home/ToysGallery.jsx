@@ -2,7 +2,10 @@ import React from "react";
 
 const ToysGallery = () => {
   return (
-    <div className="container mx-auto">
+    <div  data-aos-duration="2000" data-aos="fade-up" className="container mx-auto">
+      <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
+        Latest Toys
+      </h5>
       <div className="flex my-10 flex-wrap items-center justify-center gap-6">
         <div className="border hover:shadow-xl hover:transform hover:scale-105 duration-300">
           <img

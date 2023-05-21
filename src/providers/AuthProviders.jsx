@@ -48,7 +48,7 @@ const AuthProviders = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
       if (currentUser && currentUser.email) {
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://funko-fanfare.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

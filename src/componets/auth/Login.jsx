@@ -2,8 +2,9 @@ import React, { useContext, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { toast } from "react-toastify";
-
+import useTitle from "../../hooks/useTitle";
 const Login = () => {
+  useTitle('Login')
   const emailRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
