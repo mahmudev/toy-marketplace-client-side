@@ -2,8 +2,8 @@ import React from "react";
 
 const NewCollection = () => {
   return (
-    <div>
-      <div className=" lg:my-20 md:mx-auto sm:text-center  md:mb-12">
+ 
+      <div className=" container mx-auto sm:text-center  md:mb-12">
         <h1 className="text-3xl my-10 font-semibold text-black text-center lg:text-4xl">
           New Collection
         </h1>
@@ -42,7 +42,7 @@ const NewCollection = () => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

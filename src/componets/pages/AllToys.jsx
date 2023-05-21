@@ -36,7 +36,7 @@ const AllToys = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="container mx-auto flex flex-col min-h-screen">
       <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
         All Toys
       </h5>

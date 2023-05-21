@@ -102,7 +102,7 @@ const Home = () => {
           </Tab>
           <Tab
             className={`btn btn-outline ml-4 btn-primary ${
-              selectedTab === 2 ? "bg-secondary text-black" : ""
+              selectedTab === 3 ? "bg-secondary text-black" : ""
             }`}
             onClick={() => setSelectedTab(3)}
           >
