@@ -21,6 +21,7 @@ const Home = () => {
   const [marvelData, setMarvelData] = useState([]);
   const [dcData, setDcData] = useState([]);
   const [starWarsData, setStarWarsData] = useState([]);
+  const [animeData, setAnimeData] = useState([]);
 
   useEffect(() => {
     fetch("https://funko-fanfare.vercel.app/toys/category/marvel")
@@ -34,10 +35,14 @@ const Home = () => {
     fetch("https://funko-fanfare.vercel.app/toys/category/star-wars")
       .then((response) => response.json())
       .then((data) => setStarWarsData(data));
+
+    fetch("https://funko-fanfare.vercel.app/toys/category/anime")
+      .then((response) => response.json())
+      .then((data) => setAnimeData(data));
   }, []);
 
   return (
-    <div>
+    <>
       <div className="hero bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
@@ -45,6 +50,7 @@ const Home = () => {
             data-aos-duration="2000"
             src="https://m.media-amazon.com/images/I/51lML+ZBXcL._AC_SX679_.jpg"
             className="max-w-sm rounded-lg shadow-2xl"
+            alt="Hero Image"
           />
           <div data-aos-duration="2000" data-aos="fade-right">
             <h1 className="text-5xl font-bold">
@@ -64,12 +70,12 @@ const Home = () => {
         </div>
       </div>
       <ToysGallery></ToysGallery>
-      <h1 className="text-3xl my-10 font-semibold text-black text-center lg:text-4xl">
+      <h1 className="text-3xl my-16 font-semibold text-black text-center lg:text-4xl">
         By Category
       </h1>
 
       <Tabs className="container mx-auto">
-        <TabList className="flex justify-center">
+        <TabList className="flex flex-wrap justify-center">
           <Tab
             className={`btn btn-outline btn-primary ${
               selectedTab === 0 ? "bg-secondary text-black" : ""
@@ -94,25 +100,40 @@ const Home = () => {
           >
             Star Wars
           </Tab>
+          <Tab
+            className={`btn btn-outline ml-4 btn-primary ${
+              selectedTab === 2 ? "bg-secondary text-black" : ""
+            }`}
+            onClick={() => setSelectedTab(3)}
+          >
+            Anime
+          </Tab>
         </TabList>
 
         <TabPanel>
-          <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {marvelData.map((item) => (
               <Toy item={item} key={item._id}></Toy>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {dcData.map((item) => (
               <Toy item={item} key={item._id}></Toy>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {starWarsData.map((item) => (
+              <Toy item={item} key={item._id}></Toy>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {animeData.map((item) => (
               <Toy item={item} key={item._id}></Toy>
             ))}
           </div>
@@ -121,7 +142,7 @@ const Home = () => {
       <MostSelling></MostSelling>
       <Newsletter></Newsletter>
       <NewCollection></NewCollection>
-    </div>
+    </>
   );
 };
 

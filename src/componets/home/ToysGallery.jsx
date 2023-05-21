@@ -3,9 +3,9 @@ import React from "react";
 const ToysGallery = () => {
   return (
     <div  data-aos-duration="2000" data-aos="fade-up" className="container mx-auto">
-      <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
+        <h1 className="text-3xl my-16 font-semibold text-black text-center lg:text-4xl">
         Latest Toys
-      </h5>
+      </h1>
       <div className="flex my-10 flex-wrap items-center justify-center gap-6">
         <div className="border hover:shadow-xl hover:transform hover:scale-105 duration-300">
           <img

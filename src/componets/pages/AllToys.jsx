@@ -37,19 +37,19 @@ const AllToys = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="container flex-grow mx-auto">
-        <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
-          All Toys
-        </h5>
-        <div className="flex justify-center mb-6">
-          <input
-            type="text"
-            placeholder="Search toys"
-            className="block border-b-2 bg-base-100 text-center  border-blue-500 w-full lg:w-1/2 px-4 py-2 text-lg focus:border-blue-600 focus:outline-none"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-        </div>
+      <h5 className="mb-3 text-xl text-center py-6 font-extrabold leading-none sm:text-2xl">
+        All Toys
+      </h5>
+      <div className="flex justify-center mb-6">
+        <input
+          type="text"
+          placeholder="Search toys"
+          className="block border-b-2 bg-base-100 text-center  border-blue-500 w-full lg:w-1/2 px-4 py-2 text-lg focus:border-blue-600 focus:outline-none"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+      </div>
+      <div className="overflow-x-auto w-full">
         {error && (
           <div className="text-red-500 text-center mb-6">
             Error occurred while fetching data.

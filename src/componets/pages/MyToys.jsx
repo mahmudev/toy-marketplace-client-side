@@ -61,12 +61,18 @@ const MyToys = () => {
   };
   return (
     <div className="container min-h-screen  mx-auto">
-      <h2 className="text-center py-12 text-5xl">Your toys: {myToys.length}</h2>
+      <h2 className="text-center py-12 text-3xl">
+        Your toys: {myToys?.length}
+      </h2>
       <div className="overflow-x-auto w-full">
-        <div className="flex justify-end">
-          <select onChange={handleSort}>
-            <option value="asc">Sort Ascending</option>
-            <option value="desc">Sort Descending</option>
+        <div className="flex my-4 justify-center">
+          <select
+            className="select select-bordered w-full max-w-xs"
+            onChange={handleSort}
+          >
+            <option>Sort by Price </option>
+            <option value="asc">Low Price</option>
+            <option value="desc">High Price</option>
           </select>
         </div>
         <table className="table w-full">
@@ -82,12 +88,12 @@ const MyToys = () => {
           </thead>
           <tbody>
             {myToys.map((toy) => (
-              <tr key={toy._id}>
+              <tr key={toy?._id}>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="rounded w-24 h-40">
-                        <img src={toy.img} />
+                        <img src={toy?.img} />
                       </div>
                     </div>
                   </div>
@@ -115,7 +121,7 @@ const MyToys = () => {
                 <th>
                   <div className="flex  gap-4">
                     <button
-                      onClick={() => handleDelete(toy._id)}
+                      onClick={() => handleDelete(toy?._id)}
                       x-data="{ tooltip: 'Delete' }"
                       href="#"
                     >
@@ -136,7 +142,7 @@ const MyToys = () => {
                       </svg>
                     </button>
                     <button>
-                      <Link to={`/update-toy/${toy._id}`}>
+                      <Link to={`/update-toy/${toy?._id}`}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"

@@ -70,6 +70,7 @@ const AddAToy = () => {
               <option value="marvel">Marvel</option>
               <option value="dc">DC</option>
               <option value="star-wars">Star-Wars</option>
+              <option value="anime">Anime</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -196,7 +197,7 @@ const AddAToy = () => {
             placeholder="Description"
           ></textarea>
         </div>
-        <input type="submit" value="Add toys" className="btn btn-primary" />
+        <input type="submit" value="Add toy" className="btn btn-primary" />
       </form>
     </div>
   );
